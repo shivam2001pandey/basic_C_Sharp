@@ -1,0 +1,45 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication3
+{
+    class practice
+    {
+        
+        static void Main(string[] args)
+        {
+            // jump game
+            int n = Convert.ToInt32(Console.ReadLine());
+            int[] arr = new int[n];
+            for(int i=0;i< n;i++)
+            {
+                string val = Console.ReadLine();
+                int num;
+                if (int.TryParse(val, out num)) 
+                {
+                    arr[i] = num;
+                }
+            }
+            int maxSoFar = 0;
+            int flag = 1;
+            for(int i=0;i< n;i++)
+            {
+                if(maxSoFar < i)
+                {
+                    Console.WriteLine("false");
+                    flag = 0;
+                    break;
+                }
+                maxSoFar = Math.Max(maxSoFar, i + arr[i]);
+            }
+            if(flag==1)
+            {
+                Console.WriteLine("true");
+            }
+            Console.ReadLine();
+        }
+    }
+}
